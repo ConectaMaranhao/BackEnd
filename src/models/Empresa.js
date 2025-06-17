@@ -28,8 +28,6 @@ const empresaSchema = new mongoose.Schema(
       // Validação básica de email
       match: [/^\S+@\S+\.\S+$/, "Por favor, use um endereço de email válido."],
     },
-    senha: { type: String, required: true, select: false }, // 'select: false' para não retornar a senha em queries por padrão
-    // 'dataCadastro' deve ter um 'type' e um 'default' para registrar a data de criação automaticamente.
     dataCadastro: { type: Date, default: Date.now },
   },
   {
