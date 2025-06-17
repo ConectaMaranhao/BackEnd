@@ -5,7 +5,7 @@ const usuarioSchema = new mongoose.Schema({
     username: { type: String, required: true, trim: true },
     senha: { type: String, required: true, select: false }, // 'select: false' para não retornar a senha em queries por padrão
     // 'dataCadastro' deve ter um 'type' e um 'default' para registrar a data de criação automaticamente.
-    ativo: { type: Boolean, required: true }
+    ativo: { type: Boolean, required: true, default: true }
 }, { versionKey: false });
 
 const usuario = mongoose.model("usuario", usuarioSchema);
