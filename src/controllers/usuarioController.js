@@ -1,6 +1,6 @@
 import usuario from "../models/Usuario.js";
 
-class UserController {
+class UsuarioController {
     static async getAll(req, res) {
         try {
             const usuarios = await usuario.find({});
@@ -38,29 +38,10 @@ class UserController {
                 return res.status(404).json({message: "Usuário não encontrado"});
             }
 
-           res.status(200).json({message: "Dados do usuário alterados com sucesso", usuarioEncontrado});
+           res.status(200).json({message: "Dados do usuário alterados com sucesso", usuario: usuarioEncontrado});
 
         } catch (error) {
             res.status(500).json({message: `Falha ao atualiar dados do usuário - ${error.message}`});
-        }
-    }
-
-    static async redefinirSenha(req, res) {
-        try {
-            const { senha } = req.body;
-            const usuarioEncontrado = await usuario.findByIdAndUpdate(
-                req.params.id,
-                { senha },
-                { new: true , runValidators: true }
-            );
-
-            if (!usuarioEncontrado) {
-                return res.status(404).json({message: "Usuário não encontrado"});
-            }
-            res.status(200).json({message: "Senha redefinida com sucesso"});
-
-        } catch (error) {
-            res.status(500).json({message: `Falha ao redefinir senha - ${error.message}`});
         }
     }
 
@@ -77,4 +58,4 @@ class UserController {
     }
 }
 
-export default UserController;
+export default UsuarioController;
