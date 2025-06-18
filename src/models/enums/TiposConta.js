@@ -1,6 +1,7 @@
 const TiposConta = {
   PESSOA: "pessoa",
-  EMPRESA: "empresa"
+  EMPRESA: "empresa",
+  ADMIN: "admin"
 };
 
-export default TiposConta;
+export default TiposConta;  
