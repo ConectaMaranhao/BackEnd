@@ -25,8 +25,9 @@ class ContaController {
 
     static async criarConta(req, res) {
         try {
-            const novaConta = await conta.create(req.body).populate("userId", "username ativo");
-            res.status(200).json({message: "Conta criada com sucesso", conta: novaConta});
+            const novaConta = await conta.create(req.body);
+            const novaContaPopulada = await novaConta.populate("userId", "username ativo");
+            res.status(200).json({message: "Conta criada com sucesso", conta: novaContaPopulada});
         } catch (error) {
             res.status(500).json({message: `Erro ao registrar conta - ${error.message}`});
         }
