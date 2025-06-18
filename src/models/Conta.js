@@ -8,13 +8,13 @@ const contaSchema = new mongoose.Schema({
         ref: "usuario",
         required: true
     },
-    type: { 
+    tipo: { 
         type: String,
         enum: Object.values(TiposConta),
         required: true
     }
-});
+}, { versionKey: false });
 
-const conta = mongoose.model(contaSchema);
+const conta = mongoose.model("conta", contaSchema);
 
 export default conta;

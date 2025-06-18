@@ -3,4 +3,4 @@ const TiposConta = {
   EMPRESA: "empresa"
 };
 
-export default TiposConta;
+export default TiposConta;  

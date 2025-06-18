@@ -41,11 +41,11 @@ class UsuarioController {
            res.status(200).json({message: "Dados do usuário alterados com sucesso", usuario: usuarioEncontrado});
 
         } catch (error) {
-            res.status(500).json({message: `Falha ao atualiar dados do usuário - ${error.message}`});
+            res.status(500).json({message: `Falha ao atualizar dados do usuário - ${error.message}`});
         }
     }
 
-    static async apagarUsuario(req, res) {
+    static async deletarUsuario(req, res) {
         try {
             const usuarioEncontrado = usuario.findByIdAndDelete(req.params.id);
             if (!usuarioEncontrado) {
