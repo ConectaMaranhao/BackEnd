@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 const empresaSchema = new mongoose.Schema(
   {
     id: { type: mongoose.Schema.Types.ObjectId },
+    contaId: { 
+      type: mongoose.Types.ObjectId,
+      ref: "conta",
+      required: true
+    },
     nome: { type: String, required: true, trim: true }, // Adicionado trim para remover espaços em branco
     cnpj: {
       type: String,
