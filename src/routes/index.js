@@ -7,6 +7,6 @@ import cursos from "./cursosRoutes.js";
 const routes = (app) => {
   app.route("/").get((req, res) => res.status(200).send("Server on."));
   app.use(usuarios, empresas, contas, cursos);
-
+}
 
 export default routes;
