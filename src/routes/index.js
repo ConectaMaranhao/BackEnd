@@ -1,4 +1,3 @@
-import express from "express";
 import usuarios from "./usuarioRoutes.js";
 import empresas from "./empresasRoutes.js";
 import contas from "./contaRoutes.js";
