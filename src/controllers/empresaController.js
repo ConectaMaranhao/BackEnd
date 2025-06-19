@@ -8,7 +8,7 @@ class EmpresaController {
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha na requisição` });
+        .json({ message: `${erro.message} - Falha na requisição` });
     }
   }
 
@@ -20,7 +20,7 @@ class EmpresaController {
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha na requisição da empresa` });
+        .json({ message: `${erro.message} - Falha na requisição da empresa` });
     }
   }
 
@@ -29,11 +29,11 @@ class EmpresaController {
       const novaEmpresa = await empresa.create(req.body);
       res
         .status(201)
-        .json({ message: "criada com sucesso", empresa: novaEmpresa });
+        .json({ message: "Criada com sucesso", empresa: novaEmpresa });
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha ao cadastrar empresa` });
+        .json({ message: `${erro.message} - Falha ao cadastrar empresa` });
     }
   }
 
@@ -41,11 +41,11 @@ class EmpresaController {
     try {
       const id = req.params.id;
       await empresa.findByIdAndUpdate(id, req.body);
-      res.status(200).json({ message: "empresa atualizada" });
+      res.status(200).json({ message: "Empresa atualizada" });
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha na atualização` });
+        .json({ message: `${erro.message} - Falha na atualização` });
     }
   }
 
@@ -53,9 +53,9 @@ class EmpresaController {
     try {
       const id = req.params.id;
       await empresa.findByIdAndDelete(id);
-      res.status(200).json({ message: "empresa excluída com sucesso" });
+      res.status(200).json({ message: "Empresa excluída com sucesso" });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha na exclusão` });
+      res.status(500).json({ message: `${erro.message} - Falha na exclusão` });
     }
   }
 }

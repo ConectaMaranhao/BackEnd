@@ -2,10 +2,11 @@ import usuarios from "./usuarioRoutes.js";
 import empresas from "./empresasRoutes.js";
 import contas from "./contaRoutes.js";
 import cursos from "./cursosRoutes.js";
+import pessoas from "./pessoasRoutes.js";
 
 const routes = (app) => {
   app.route("/").get((req, res) => res.status(200).send("Server on."));
-  app.use(usuarios, empresas, contas, cursos);
-}
+  app.use(usuarios, empresas, contas, cursos, pessoas);
+};
 
 export default routes;

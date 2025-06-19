@@ -8,7 +8,7 @@ class CursoController {
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha na requisição` });
+        .json({ message: `${erro.message} - Falha na requisição` });
     }
   }
 
@@ -20,18 +20,18 @@ class CursoController {
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha na requisição da curso` });
+        .json({ message: `${erro.message} - Falha na requisição do curso` });
     }
   }
 
   static async cadastrarCurso(req, res) {
     try {
       const novoCurso = await curso.create(req.body);
-      res.status(201).json({ message: "criado com sucesso", curso: novoCurso });
+      res.status(201).json({ message: "Criado com sucesso", curso: novoCurso });
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha ao cadastrar curso` });
+        .json({ message: `${erro.message} - Falha ao cadastrar curso` });
     }
   }
 
@@ -39,11 +39,11 @@ class CursoController {
     try {
       const id = req.params.id;
       await curso.findByIdAndUpdate(id, req.body);
-      res.status(200).json({ message: "curso atualizado" });
+      res.status(200).json({ message: "Curso atualizado" });
     } catch (erro) {
       res
         .status(500)
-        .json({ message: `${erro.message} - falha na atualização` });
+        .json({ message: `${erro.message} - Falha na atualização` });
     }
   }
 
@@ -51,9 +51,9 @@ class CursoController {
     try {
       const id = req.params.id;
       await curso.findByIdAndDelete(id);
-      res.status(200).json({ message: "curso excluído com sucesso" });
+      res.status(200).json({ message: "Curso excluído com sucesso" });
     } catch (erro) {
-      res.status(500).json({ message: `${erro.message} - falha na exclusão` });
+      res.status(500).json({ message: `${erro.message} - Falha na exclusão` });
     }
   }
 }
