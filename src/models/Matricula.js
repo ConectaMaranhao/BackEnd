@@ -22,8 +22,12 @@ const matriculaSchema = new mongoose.Schema({
         default: "ativa",
         required: true
     }
+},
+{
+    timestamps: true,
+    versionKey: false
 });
 
-const matriculaModel = mongoose.model("matricula", matriculaSchema);
+const matricula = mongoose.model("matricula", matriculaSchema);
 
-export default matriculaModel;
+export default matricula;
