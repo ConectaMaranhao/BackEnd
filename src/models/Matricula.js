@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 const matriculaSchema = new mongoose.Schema({
     pessoaId: { 
         type: mongoose.Types.ObjectId,
-        ref: "pessoa",
+        ref: "pessoas",
         required: true
     },
     cursoId: {
         type: mongoose.Types.ObjectId,
-        ref: "curso",
+        ref: "cursos",
         required: true
     },
     dataMatricula: {

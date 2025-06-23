@@ -3,7 +3,9 @@ import matricula from "../models/Matricula.js";
 class MatriculaController {
     static async getAll(req, res) {
         try {
-            const matriculas = await matricula.find({});
+            const matriculas = await matricula.find({})
+            .populate("pessoaId", "nome email")
+            .populate("cursoId", "nome");
             res.status(200).json(matriculas);
         } catch (error) {
             res.status(500).json({message: `Falha ao buscar matrículas - ${error.message}`});
@@ -12,7 +14,9 @@ class MatriculaController {
 
     static async getById(req, res) {
         try {
-            const matriculaEcontrada = await matricula.findById(req.params.id);
+            const matriculaEcontrada = await matricula.findById(req.params.id)
+            .populate("pessoaId", "nome email")
+            .populate("cursoId", "nome");
             res.status(200).json(matriculaEcontrada);
         } catch (error) {
             res.status(500).json({message: `Falha ao buscar matricula - ${error.message}`});

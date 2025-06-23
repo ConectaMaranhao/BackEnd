@@ -4,8 +4,8 @@ class ContaController {
 
     static async getAll(req, res) {
         try {
-            const contas = await conta.find({});
-            res.status(200).json(contas).populate("userId", "username ativo");
+            const contas = await conta.find({}).populate("userId", "username ativo");
+            res.status(200).json(contas);
         } catch (error) {
             res.status(500).json({message: `Erro ao buscar contas - ${error.message}`});
         }
