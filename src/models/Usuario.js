@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const usuarioSchema = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId },
@@ -7,6 +8,13 @@ const usuarioSchema = new mongoose.Schema({
     // 'dataCadastro' deve ter um 'type' e um 'default' para registrar a data de criação automaticamente.
     ativo: { type: Boolean, required: true, default: true }
 }, { versionKey: false });
+
+usuarioSchema.pre('save', async function(next) {
+    if (!this.isModified("senha")) return next();
+
+    this.senha = await bcrypt.hash(this.senha, 10);
+    next();
+});
 
 const usuario = mongoose.model("usuario", usuarioSchema);
 
