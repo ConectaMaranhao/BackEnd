@@ -22,6 +22,8 @@ app.use(cors({
     credentials: true
 }));
 
+app.use(authMiddleware);
+
 routes(app);
 
 export default app;

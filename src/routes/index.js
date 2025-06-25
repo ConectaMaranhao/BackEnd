@@ -4,6 +4,7 @@ import contas from "./contaRoutes.js";
 import cursos from "./cursosRoutes.js";
 import pessoas from "./pessoasRoutes.js";
 import matriculas from "./matriculaRoutes.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
 const routes = (app) => {
   app.route("/").get((req, res) => res.status(200).send("Server on."));

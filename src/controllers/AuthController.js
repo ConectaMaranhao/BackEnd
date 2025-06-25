@@ -1,4 +1,7 @@
 import usuario from "../models/Usuario.js";
+import jwt from "jsonwebtoken";
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 class AuthController {
     static async registrar(req, res) {
@@ -24,7 +27,35 @@ class AuthController {
             res.status(500).json({message: `Erro ao cadastrar usuário - ${error.message}`});
         }
     }
-}
 
+    static async login(req, res) {
+        try {
+            const {username, senha} = req.body;
+
+            const usuarioEcontrado = await usuario.findOne({username: username});
+            if (!usuarioEcontrado) {
+                return res.status(401).json({message: "Usuário não encontrado."});
+            }
+            
+            const isPasswordCorrect = await bcrypt.compare(senha, usuarioEcontrado.senha);
+            if (!isPasswordCorrect) {
+                return res.status(401).json({message: "Senha incorreta."});
+            }
+
+            const token = jwt.sign(
+                {id: usuarioEcontrado._id},
+                JWT_SECRET,
+                {expiresIn: "2m"}
+            );
+
+            return res.status(200).json({
+                message: "Login realizado com sucesso.",
+                token
+            });
+        } catch (error) {
+            res.status(500).json({message: `Erro ao fazer login - ${error.message}`});  
+        }
+    }
+}
 
 export default AuthController;
