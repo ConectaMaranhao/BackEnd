@@ -3,6 +3,7 @@ import cors from "cors";
 import routes from "./routes/index.js";
 import databaseConnector from "./config/dbConnection.js";
 import jsonParser from "./middlewares/typeParser.js";
+import authMiddleware from "./middlewares/authMiddleware.js";
 
 const connection = await databaseConnector();
 
