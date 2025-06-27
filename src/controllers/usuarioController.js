@@ -47,7 +47,7 @@ class UsuarioController {
 
     static async deletarUsuario(req, res) {
         try {
-            const usuarioEncontrado = usuario.findByIdAndDelete(req.params.id);
+            const usuarioEncontrado = await usuario.findByIdAndDelete(req.params.id);
             if (!usuarioEncontrado) {
                 return res.status(404).json({message: "Usuário não encontrado"});
             }
