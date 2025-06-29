@@ -17,7 +17,7 @@ connection.once("open", () => {
 const app = express();
 app.use(jsonParser);
 app.use(cors({
-    origin: "https://conectamaranhao.github.io/Front-End",
+    origin: "https://conectamaranhao.github.io",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true
 }));
